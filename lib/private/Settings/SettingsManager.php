@@ -23,6 +23,7 @@ namespace OC\Settings;
 
 use OC\Security\CertificateManager;
 use OC\Settings\Panels\Admin\Apps;
+use OC\Settings\Panels\Admin\LockBreaker;
 use OC\Settings\Panels\Helper;
 use OCP\App\IAppManager;
 use OCP\IDBConnection;
@@ -237,6 +238,7 @@ class SettingsManager implements ISettingsManager {
 				LegacyAdmin::class,
 				BackgroundJobs::class,
 				Logging::class,
+				LockBreaker::class,
 				Tips::class,
 				SecurityWarning::class,
 				Mail::class,
@@ -295,6 +297,7 @@ class SettingsManager implements ISettingsManager {
 			Encryption::class => new Encryption(),
 			FileSharing::class => new FileSharing($this->config, $this->helper, $this->lfactory),
 			Logging::class => new Logging($this->config, $this->urlGenerator, $this->helper),
+			LockBreaker::class => new LockBreaker($this->config),
 			Mail::class => new Mail($this->config, $this->helper),
 			PersistentLocking::class => new PersistentLocking($this->config),
 			SecurityWarning::class => new SecurityWarning(
